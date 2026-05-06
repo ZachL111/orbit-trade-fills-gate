@@ -59,3 +59,5 @@ foreach ($pathPattern in $knownPaths) {
 }
 
 zig test src/main.zig
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-orbit-trade-fills-detail.ps1

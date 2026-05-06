@@ -33,3 +33,27 @@ test "fixture decisions" {
     try std.testing.expectEqual(@as(i32, 190), score(signal_case_3));
     try std.testing.expect(std.mem.eql(u8, classify(signal_case_3), "accept"));
 }
+
+const DomainReview = struct {
+    signal: i32,
+    slack: i32,
+    drag: i32,
+    confidence: i32,
+};
+
+fn domainReviewScore(item: DomainReview) i32 {
+    return item.signal * 2 + item.slack + item.confidence - item.drag * 3;
+}
+
+fn domainReviewLane(item: DomainReview) []const u8 {
+    const value = domainReviewScore(item);
+    if (value >= 140) return "ship";
+    if (value >= 105) return "watch";
+    return "hold";
+}
+
+test "domain review lane" {
+    const item = DomainReview{ .signal = 70, .slack = 50, .drag = 9, .confidence = 63 };
+    try std.testing.expectEqual(@as(i32, 226), domainReviewScore(item));
+    try std.testing.expect(std.mem.eql(u8, domainReviewLane(item), "ship"));
+}
