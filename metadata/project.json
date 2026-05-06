@@ -1,0 +1,32 @@
+{
+  "index": 446,
+  "phase": 2,
+  "batch": 50,
+  "name": "orbit-trade-fills-gate",
+  "planned_name": "orbit-trade-fills-gate",
+  "language": "Zig",
+  "category": "Trading systems",
+  "goal": "Design a Zig verification harness for fills systems, covering incremental indexing, append-only fixtures, and failure-oriented tests.",
+  "repository_url": "https://github.com/ZachL111/orbit-trade-fills-gate",
+  "verification_command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1",
+  "model": {
+    "inputs": [
+      "demand",
+      "capacity",
+      "latency",
+      "risk",
+      "weight"
+    ],
+    "threshold": 171,
+    "risk_penalty": 6,
+    "latency_penalty": 2,
+    "weight_bonus": 4,
+    "decision_rule": "accept when score is greater than or equal to threshold, otherwise review"
+  },
+  "quality_gates": [
+    "readme constraint scan",
+    "fixture presence check",
+    "metadata JSON parse",
+    "language verifier"
+  ]
+}
