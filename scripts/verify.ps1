@@ -61,3 +61,9 @@ foreach ($pathPattern in $knownPaths) {
 zig test src/main.zig
 
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-orbit-trade-fills-detail.ps1
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-orbit-trade-fills-properties.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-orbit-trade-fills-golden.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

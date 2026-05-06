@@ -1,0 +1,17 @@
+{
+  "repo": "orbit-trade-fills-gate",
+  "thresholds": {
+    "signal": 4,
+    "slack": 2,
+    "confidence": 2,
+    "drag": 2,
+    "ship": 195,
+    "watch": 105
+  },
+  "terms": [
+    "spread pressure",
+    "fill risk",
+    "portfolio drift",
+    "quote width"
+  ]
+}
